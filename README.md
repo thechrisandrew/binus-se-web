@@ -1,6 +1,6 @@
 <div align="center">
 
-# cf-pages-tailwind-template
+# binus-se-web
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
@@ -11,7 +11,7 @@
 
 ## Description
 
-This is a template repository for creating a simple web frontend with Cloudflare Pages & Tailwind.
+This is a web based frontend application for a Software Engineering Project at Binus University.
 
 ## Cloudflare Pages Settings
 
