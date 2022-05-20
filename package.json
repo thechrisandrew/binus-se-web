@@ -1,0 +1,23 @@
+{
+    "name": "test-cloudflare-pages",
+    "version": "1.0.0",
+    "description": "repository for testing cloudflare pages",
+    "main": "index.js",
+    "scripts": {
+        "buildcss-dev": "npx tailwindcss -i ./src/input.css -o ./public/styles/main.css --watch",
+        "build": "npx tailwindcss -i ./src/input.css -o ./public/styles/main.css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/thechrisandrew/test-cloudflare-pages.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/thechrisandrew/test-cloudflare-pages/issues"
+    },
+    "homepage": "https://github.com/thechrisandrew/test-cloudflare-pages#readme",
+    "devDependencies": {
+        "tailwindcss": "^3.0.24"
+    }
+}
