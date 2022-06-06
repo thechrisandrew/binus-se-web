@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Home</title>
-        <link rel="stylesheet" href="./styles/main.css" />
-    </head>
-    <body>
-        <h1 class="text-3xl font-bold underline">Hello World</h1>
-        <a href="./about.html">Go to about</a>
-    </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home</title>
+		<link rel="stylesheet" href="./styles/main.css" />
+	</head>
+	<body>
+		<!-- NAV/SIDEBAR GOES HERE -->
+
+		<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded shadow-md">
+			<div class="container flex flex-wrap justify-center items-center mx-auto">
+				<a href="#" class="flex items-center">
+					<img src="./assets/Logo.svg" class="h-8 sm:h-9" alt="Logo" />
+				</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<h1 class="font-medium leading-tight text-3xl mt-2 mb-2">Dashboard</h1>
+
+			<div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="px-6 py-4">
+					<div class="font-bold text-xl mb-2">Today Sales</div>
+					<hr />
+					<div class="text-gray-700 text-base">
+						<span>Total Income:</span>
+						<span>Rp. 1.000.000</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="px-6 py-4">
+					<div class="font-bold text-xl mb-2">Yesterday Sales</div>
+					<hr />
+					<div class="text-gray-700 text-base">
+						<span>Total Income:</span>
+						<span>Rp. 1.000.000</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- <div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="px-6 py-4">
+					<div class="font-bold text-xl mb-2">Item Sales Statistics</div>
+					<hr />
+					<div class="text-gray-700 text-base"></div>
+				</div>
+			</div> -->
+
+			<div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="px-6 py-4">
+					<div class="font-bold text-xl mb-2">Recent Transactions</div>
+					<hr />
+					<div class="text-gray-700 text-base"></div>
+				</div>
+			</div>
+
+			<div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="px-6 py-4">
+					<div class="font-bold text-xl mb-2">Best Sellers</div>
+					<hr />
+					<div class="text-gray-700 text-base"></div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
