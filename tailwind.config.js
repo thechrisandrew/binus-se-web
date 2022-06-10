@@ -19,7 +19,9 @@ module.exports = {
 			},
 			colors: {
 				prim: {
+					400: "#9274E4",
 					500: "#7C3AED",
+					600: "#783BE0",
 					700: "#5B2AAE",
 				},
 			},
