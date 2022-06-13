@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Home</title>
+		<title>History</title>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -32,7 +32,7 @@
 					<i class="text-xl mr-3 fa-solid fa-table-columns"></i>
 					<span>Dashboard</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./checkout.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-cash-register"></i>
 					<span>Checkout</span>
 				</a>
@@ -58,7 +58,7 @@
 					<i class="text-xl mr-3 fa-solid fa-box"></i>
 					<span>Products</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./staffPage.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-gear"></i>
 					<span>Admin</span>
 				</a>
@@ -83,64 +83,64 @@
 					<div class="px-6 py-4">
 						<div class="font-bold text-xl mb-3">Select date range</div>
 						<hr class="mb-3" />
-                        <div class="flex-col justify-evenly">
-                            <div class="flex-col">From
-                                <div class="flex">
-                                    <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
-                                        <input type="text"
-                                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-                                            placeholder="Select a date" data-mdb-toggle="datepicker" />
-                                        <label for="floatingInput" class="text-gray-700">DD/MM/YYYY</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex-col">To
-                                <div class="flex">
-                                    <div class="datepicker relative form-floating mb-3 xl:w-96" data-mdb-toggle-button="false">
-                                        <input type="text"
-                                            class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-                                            placeholder="Select a date" data-mdb-toggle="datepicker" />
-                                        <label for="floatingInput" class="text-gray-700">DD/MM/YYYY</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+						<div class="flex-col justify-evenly">
+							<div class="flex-col">
+								From
+								<div class="flex">
+									<div
+										class="datepicker relative form-floating mb-3 xl:w-96"
+										data-mdb-toggle-button="false"
+									>
+										<input
+											type="text"
+											class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
+											placeholder="Select a date"
+											data-mdb-toggle="datepicker"
+										/>
+										<label for="floatingInput" class="text-gray-700">DD/MM/YYYY</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="flex-col">
+								To
+								<div class="flex">
+									<div
+										class="datepicker relative form-floating mb-3 xl:w-96"
+										data-mdb-toggle-button="false"
+									>
+										<input
+											type="text"
+											class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
+											placeholder="Select a date"
+											data-mdb-toggle="datepicker"
+										/>
+										<label for="floatingInput" class="text-gray-700">DD/MM/YYYY</label>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
-                <div class="flex items-center justify-between">
-                    <p class="font-medium leading-tight text-2xl mt-8 mb-5">Transactions</p>
-                    <div class="flex items-center justify-between">
-                        <p class="px-2">Show</p>
-                        <div class="w-12">
-                            <select class="form-select form-select-sm
-                            appearance-none
-                            block
-                            w-full
-                            px-2
-                            py-1
-                            text-sm
-                            font-normal
-                            text-gray-700
-                            bg-white bg-clip-padding bg-no-repeat
-                            border border-solid border-gray-300
-                            rounded
-                            transition
-                            ease-in-out
-                            m-0
-                            focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none" aria-label=".form-select-sm example">
-                              <option selected>1</option>
-                              <option value="1">2</option>
-                              <option value="2">3</option>
-                              <option value="3">4</option>
-                            </select>
-                          </div>
-                          <p class="pl-2">entries</p>
-                    </div>
-                    
-                </div>
-                
+				<div class="flex items-center justify-between">
+					<p class="font-medium leading-tight text-2xl mt-8 mb-5">Transactions</p>
+					<div class="flex items-center justify-between">
+						<p class="px-2">Show</p>
+						<div class="w-12">
+							<select
+								class="form-select form-select-sm appearance-none block w-full px-2 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
+								aria-label=".form-select-sm example"
+							>
+								<option selected>1</option>
+								<option value="1">2</option>
+								<option value="2">3</option>
+								<option value="3">4</option>
+							</select>
+						</div>
+						<p class="pl-2">entries</p>
+					</div>
+				</div>
 
 				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
 					<div class="px-6 py-4">
@@ -231,7 +231,7 @@
 						</div>
 					</div>
 				</div>
-                <footer class="my-10"></footer>
+				<footer class="my-10"></footer>
 			</div>
 		</div>
 
@@ -244,6 +244,7 @@
 			referrerpolicy="no-referrer"
 		></script>
 		<script src="./scripts/dashboard.js"></script>
-        <script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
+		<script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
+		<script src="./scripts/scripts.js"></script>
 	</body>
 </html>
