@@ -1,5 +1,5 @@
 module.exports = {
-	content: ["./public/**/*.{html,js}", './node_modules/tw-elements/dist/js/**/*.js'],
+	content: ["./public/**/*.{html,js}", "./node_modules/tw-elements/dist/js/**/*.{html,js}"],
 	theme: {
 		extend: {
 			keyframes: {
