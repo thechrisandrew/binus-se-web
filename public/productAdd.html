@@ -39,15 +39,15 @@
 				<hr />
 				<br />
 				<h1 class="block p-3">Transactions</h1>
-				<a href="./history.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-clock-rotate-left"></i>
 					<span>History</span>
 				</a>
-				<a href="./inbound.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-down"></i>
 					<span>Inbound</span>
 				</a>
-				<a href="./outbound.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-up"></i>
 					<span>Outbound</span>
 				</a>
@@ -102,6 +102,17 @@
 								placeholder="Enter Product SKU"
 							/>
                             <label for="productName" class="form-label inline-block my-5 text-gray-700"></label>
+								Product Quantity
+							</label>
+							<input
+								type="text"
+								class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+								id="productQuantity"
+								aria-describedby="productQuantity"
+								placeholder="Enter Product Quantity"
+							/>
+                            
+                            <label for="productName" class="form-label inline-block my-5 text-gray-700"></label>
 								Product Price
 							</label>
 							<input
@@ -111,8 +122,8 @@
 								aria-describedby="productPrice"
 								placeholder="Enter Product Price"
 							/>
-                            
-                            <button class="my-5 w-full bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-4 rounded transition-all mb-5">
+
+                            <button type="button" class="my-5 w-full bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-4 rounded transition-all mb-5" id="addProduct">
                                 Confirm
                             </button>
 						</div>
@@ -123,5 +134,8 @@
 
 		<!-- Scripts Here! -->
 		<script src="//unpkg.com/alpinejs" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="./scripts/addProduct.js" defer></script>
 	</body>
 </html>
