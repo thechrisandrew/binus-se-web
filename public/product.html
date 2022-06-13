@@ -97,63 +97,80 @@
 								<th class="p-3 text-sm font-semibold tracking-wide text-left">Action</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="bg-white">
-								<td class="p-3 text-sm text-gray-700">
-									<a href="#" class="font-bold text-blue-500 hover:underline">1</a>
-								</td>
-								<td class="p-3 text-sm text-gray-700">CHI001</td>
-								<td class="p-3 text-sm text-gray-700">Chitato Sapi Panggang - 168gr</td>
-								<td class="p-3 text-sm text-gray-700">20</td>
-								<td class="p-3 text-sm text-gray-700">Rp. 18.700</td>
-								<td>Edit</td>
-							</tr>
-							<tr class="bg-gray-100">
-								<td class="p-3 text-sm text-gray-700">
-									<a href="#" class="font-bold text-blue-500 hover:underline">2</a>
-								</td>
-								<td class="p-3 text-sm text-gray-700">CHI002</td>
-								<td class="p-3 text-sm text-gray-700">Chitato Sapi Panggang - 168gr</td>
-								<td class="p-3 text-sm text-gray-700">20</td>
-								<td class="p-3 text-sm text-gray-700">Rp. 18.700</td>
-								<td>Edit</td>
-							</tr>
-							<tr class="bg-white">
-								<td class="p-3 text-sm text-gray-700">
-									<a href="#" class="font-bold text-blue-500 hover:underline">3</a>
-								</td>
-								<td class="p-3 text-sm text-gray-700">CHI003</td>
-								<td class="p-3 text-sm text-gray-700">Chitato Sapi Panggang - 168gr</td>
-								<td class="p-3 text-sm text-gray-700">20</td>
-								<td class="p-3 text-sm text-gray-700">Rp. 18.700</td>
-								<td>Edit</td>
-							</tr>
+						<tbody id="bigProduct">
+							<template id="bigTemplate">
+								<tr class="bg-white">
+									<td class="p-3 text-sm text-gray-700">
+										<a href="#" class="font-bold text-blue-500 hover:underline">1</a>
+									</td>
+									<td class="p-3 text-sm text-gray-700">{{Id}}</td>
+									<td class="p-3 text-sm text-gray-700">
+										<div class="edit" contenteditable="true" id="{{Id}}" data-key="productName">
+											{{productName}}
+										</div>
+									</td>
+									<td class="p-3 text-sm text-gray-700">
+										<div class="edit" contenteditable="true" id="{{Id}}" data-key="quantity">
+											{{quantity}}
+										</div>
+									</td>
+									<td class="p-3 text-sm text-gray-700">
+										Rp.
+										<span class="edit" contentEditable="true" id="{{Id}}" data-key="price"
+											>{{price}}</span
+										>
+									</td>
+									<td><span class="delete" id="{{Id}}">Delete</span></td>
+								</tr>
+							</template>
 						</tbody>
 					</table>
 				</div>
 
-				<div class="grid grid-cols-1 gap-4 md:hidden">
-					<div class="flex bg-white p-4 rounded-lg shadow">
-						<div class="grow pr-5">
-							<div class="flex items-center space-x-2 text-sm">
-								<div>1</div>
-								<div>CHI001</div>
+				<div class="grid grid-cols-1 gap-4 md:hidden" id="smallProduct">
+					<template id="smallTemplate">
+						<div class="flex bg-white p-4 rounded-lg shadow">
+							<div class="grow pr-5">
+								<div class="flex items-center space-x-2 text-sm">
+									<div>{{num}}</div>
+									<div>{{Id}}</div>
+								</div>
+								<div class="edit" contenteditable="true" id="{{Id}}" data-key="productName">
+									{{productName}}
+								</div>
+								<div>
+									Remaining Stock:
+									<span class="edit" contentEditable="true" id="{{Id}}" data-key="quantity"
+										>{{quantity}}</span
+									>
+								</div>
+								<div>
+									Price: Rp.
+									<span class="edit" contentEditable="true" id="{{Id}}" data-key="price"
+										>{{price}}</span
+									>
+								</div>
 							</div>
-							<div>Chitato Sapi Panggang - 168gr</div>
-							<div>Remaining Stock: <span>20</span></div>
-							<div>Price: <span>Rp. 18.700</span></div>
+							<div class="delete" id="{{Id}}">
+								<button class="bg-prim-500 hover:bg-prim-700 text-white font-bold p-2 px-3 rounded">
+									<i class="text-xl fa-solid fa-pen-to-square"></i>
+								</button>
+							</div>
 						</div>
-						<div>
-							<button class="bg-prim-500 hover:bg-prim-700 text-white font-bold p-2 px-3 rounded">
-								<i class="text-xl fa-solid fa-pen-to-square"></i>
-							</button>
-						</div>
-					</div>
+					</template>
 				</div>
 			</div>
 		</div>
 
 		<!-- Scripts Here! -->
 		<script src="//unpkg.com/alpinejs" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+			integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script src="./scripts/listProduct.js" defer></script>
 	</body>
 </html>
