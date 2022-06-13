@@ -19,5 +19,8 @@
     "homepage": "https://github.com/thechrisandrew/test-cloudflare-pages#readme",
     "devDependencies": {
         "tailwindcss": "^3.0.24"
+    },
+    "dependencies": {
+        "tw-elements": "^1.0.0-alpha12"
     }
 }
