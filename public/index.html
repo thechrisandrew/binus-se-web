@@ -12,12 +12,13 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" />
 		<link rel="stylesheet" href="./styles/main.css" />
 	</head>
-	<body class="antialiased min-h-screen relative lg:flex bg-slate-50" x-data="{open: false}">
+	<body class="antialiased relative lg:flex bg-slate-50" x-data="{open: false}">
 		<!-- NAV/SIDEBAR (LEFT) -->
 		<nav
-			class="absolute inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 h-screen p-3 text-white"
+			class="absolute min-h-full inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 p-3 text-white"
 			:class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': open === false}"
 		>
 			<div class="flex flex-row justify-end">
@@ -78,10 +79,10 @@
 
 				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Dashboard</h1>
 
-				<div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
 					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-2">Today Sales</div>
-						<hr />
+						<div class="font-bold text-xl mb-3">Today Sales</div>
+						<hr class="mb-3" />
 						<div class="text-gray-700 text-base">
 							<span>Total Income:</span>
 							<span>Rp. 1.000.000</span>
@@ -89,10 +90,10 @@
 					</div>
 				</div>
 
-				<div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
 					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-2">Yesterday Sales</div>
-						<hr />
+						<div class="font-bold text-xl mb-3">Yesterday Sales</div>
+						<hr class="mb-3" />
 						<div class="text-gray-700 text-base">
 							<span>Total Income:</span>
 							<span>Rp. 1.000.000</span>
@@ -100,27 +101,60 @@
 					</div>
 				</div>
 
-				<!-- <div class="max-w-sm rounded overflow-hidden shadow-md">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Item Sales Statistics</div>
-                        <hr />
-                        <div class="text-gray-700 text-base"></div>
-                    </div>
-                </div> -->
-
-				<div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
 					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-2">Recent Transactions</div>
-						<hr />
-						<div class="text-gray-700 text-base"></div>
+						<div class="font-bold text-xl mb-3">Item Sales Statistics</div>
+						<hr class="mb-3" />
+						<div class="max-w-lg ct-chart ct-perfect-fourth"></div>
 					</div>
 				</div>
 
-				<div class="max-w-sm rounded overflow-hidden shadow-md">
+				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
 					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-2">Best Sellers</div>
-						<hr />
-						<div class="text-gray-700 text-base"></div>
+						<div class="font-bold text-xl mb-3">Recent Transactions</div>
+						<hr class="mb-3" />
+						<div class="card">
+							<table class="w-full table-auto">
+								<tr>
+									<td class="p-2">3x</td>
+									<td class="p-2">Chitato Sapi Panggang - 168gr</td>
+									<td class="p-2">Rp 56,100</td>
+								</tr>
+								<tr>
+									<td class="p-2">2x</td>
+									<td class="p-2">Coca Cola - 350ml</td>
+									<td class="p-2">Rp 30,400</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<hr />
+									</td>
+								</tr>
+								<tr>
+									<td class="p-2" colspan="2">Total Payment:</td>
+									<td class="p-2">Rp 86,500</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
+					<div class="px-6 py-4">
+						<div class="font-bold text-xl mb-3">Best Sellers</div>
+						<hr class="mb-3" />
+						<div>
+							<div class="rounded overflow-hidden shadow mb-5">
+								<div class="px-6 py-4">
+									<div class="font-bold text-lg">Chitato Sapi Panggang - 168gr</div>
+								</div>
+							</div>
+							<div class="rounded overflow-hidden shadow mb-5">
+								<div class="px-6 py-4">
+									<div class="font-bold text-lg">Coca Cola - 350ml</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -128,5 +162,12 @@
 
 		<!-- Scripts Here! -->
 		<script src="//unpkg.com/alpinejs" defer></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"
+			integrity="sha512-9rxMbTkN9JcgG5euudGbdIbhFZ7KGyAuVomdQDI9qXfPply9BJh0iqA7E/moLCatH2JD4xBGHwV6ezBkCpnjRQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script src="./scripts/dashboard.js"></script>
 	</body>
 </html>
