@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Home</title>
+		<title>Add Products</title>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -17,7 +17,7 @@
 	<body class="antialiased min-h-screen relative lg:flex bg-slate-50" x-data="{open: false}">
 		<!-- NAV/SIDEBAR (LEFT) -->
 		<nav
-			class="absolute inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 h-screen p-3 text-white"
+			class="absolute min-h-full inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 p-3 text-white"
 			:class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': open === false}"
 		>
 			<div class="flex flex-row justify-end">
@@ -31,7 +31,7 @@
 					<i class="text-xl mr-3 fa-solid fa-table-columns"></i>
 					<span>Dashboard</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./checkout.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-cash-register"></i>
 					<span>Checkout</span>
 				</a>
@@ -39,15 +39,15 @@
 				<hr />
 				<br />
 				<h1 class="block p-3">Transactions</h1>
-				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./history.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-clock-rotate-left"></i>
 					<span>History</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./inbound.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-down"></i>
 					<span>Inbound</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./outbound.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-up"></i>
 					<span>Outbound</span>
 				</a>
@@ -57,7 +57,7 @@
 					<i class="text-xl mr-3 fa-solid fa-box"></i>
 					<span>Products</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./staffPage.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-gear"></i>
 					<span>Admin</span>
 				</a>
@@ -137,5 +137,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<script src="./scripts/addProduct.js" defer></script>
+        <script src="./scripts/scripts.js"></script>
 	</body>
 </html>
