@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home</title>
+		<link rel="stylesheet" href="./styles/main.css" />
+	</head>
+	<body class="antialiased min-h-screen relative lg:flex">
+		<!-- NAV/SIDEBAR (LEFT) -->
+
+		<nav class="absolute lg:relative z-10 w-64 bg-prim-600 h-screen p-3 text-white">
+			<div class="mt-14">
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Dashboard</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Checkout</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Transaction</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Products</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Admin</a>
+			</div>
+		</nav>
+
+		<!-- CONTENT (RIGHT) -->
+
+		<div class="relative z-0 lg:flex-grow">
+			<header class="bg-white border-gray-200 shadow-md flex flex-wrap justify-center items-center mx-auto">
+				<a href="#" class="flex items-center px-2 sm:px-4 py-2.5">
+					<img src="./assets/Logo.svg" class="h-8 sm:h-9" alt="Logo" />
+				</a>
+			</header>
+
+			<div class="px-5 lg:px-10">
+				<!-- Content goes here! -->
+
+				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Staff Dashboard</h1>
+
+                <button
+					class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-4 rounded transition-all mb-5"
+				>
+					Add Staff
+				</button>
+                <div
+                class="bg-white absolute container overflow-auto max-w-sm px-2 py-2 shadow-2xl rounded-lg animate-sliding"
+            >
+                
+                <h1 class="font-bold text-3xl px-1">Jose Giancarlos</h1>
+                <h1 class="font-semibold text-2xl px-1">Male</h1>
+                <h1 class="font-semibold text-2xl px-1">0812-1817-1913</h1>    
+                <h1 class="font-semibold text-2xl px-1">Jl Kebun Jeruk no. 17 RT/RW 001/002</h1>
+                
+                
+			</div>
+		</div>
+	</body>
+</html>
