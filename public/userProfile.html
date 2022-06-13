@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home</title>
+		<link rel="stylesheet" href="./styles/main.css" />
+	</head>
+	<body class="antialiased min-h-screen relative lg:flex">
+		<!-- NAV/SIDEBAR (LEFT) -->
+
+		<nav class="absolute lg:relative z-10 w-64 bg-prim-600 h-screen p-3 text-white">
+			<div class="mt-14">
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Dashboard</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Checkout</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Transaction</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Products</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">Admin</a>
+			</div>
+		</nav>
+
+		<!-- CONTENT (RIGHT) -->
+
+		<div class="relative z-0 lg:flex-grow">
+			<header class="bg-white border-gray-200 shadow-md flex flex-wrap justify-center items-center mx-auto">
+				<a href="#" class="flex items-center px-2 sm:px-4 py-2.5">
+					<img src="./assets/Logo.svg" class="h-8 sm:h-9" alt="Logo" />
+				</a>
+			</header>
+
+			<div class="px-5 lg:px-10">
+				<!-- Content goes here! -->
+
+				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">My Profile</h1>
+                
+				<button
+				class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-4 rounded transition-all mb-5"
+				>
+				Edit Profile
+				</button>
+				<div>
+					<div class="flex flex-col">
+						<label
+							class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-black text-opacity-70"
+							>Username</label
+						>
+						<input
+							placeholder="rakuzen"
+							class="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
+							required
+						/>
+
+						<label
+							class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-black text-opacity-70"
+							>First Name</label
+						>
+						<input
+							placeholder="Alex"
+							class="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
+							required
+						/>
+						<label
+							class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-black text-opacity-70"
+							>Last Name</label
+						>
+						<input
+							placeholder="Steven"
+							class="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
+							required
+						/>
+						<label
+							class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-black text-opacity-70"
+							>Email</label
+						>
+						<input
+							placeholder="rakuzen@example.com"
+							class="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
+							required
+						/>
+						</div>
+					</div>
+					<button
+					class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-5 rounded transition-all mb-5"
+					>
+					Change Password
+				  	</button>
+				  	<button
+				  	class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-5 rounded transition-all mb-5"
+				  	>
+				  	Sign Out
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
