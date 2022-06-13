@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="bg-gradient-to-r from-violet-500 to-violet-300 h-screen w-screen">
-            <form action="/auth/login" method="post" class="h-full overflow-hidden">
+            <form action="#" class="h-full overflow-hidden">
                 <div class="main block relaitve h-full">
                     <div
                         class="bg-white absolute container overflow-auto max-w-[270px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:max-w-[300px] sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 md:max-w-sm md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 lg:max-w-md lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 xl:max-w-lg xl:top-1/2 xl:left-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2 2xl:max-w-lg 2xl:top-1/2 2xl:left-1/2 2xl:-translate-x-1/2 2xl:-translate-y-1/2 shadow-2xl rounded-lg animate-sliding"
@@ -56,7 +56,7 @@
                                     type="email"
                                     placeholder="Enter Email Address"
                                     name="email"
-                                    id="login"
+                                    id="email"
                                     class="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl mx-12 sm:mx-14 md:mx-16 lg:mx-20 xl:mx-24 py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
                                     required
                                 />
@@ -70,7 +70,7 @@
                                     type="password"
                                     name="password"
                                     placeholder="Enter Password"
-                                    id="Password"
+                                    id="password"
                                     class="text-black text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl mx-12 sm:mx-14 md:mx-16 lg:mx-20 xl:mx-24 py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
                                     required
                                 />
@@ -79,9 +79,11 @@
                                 ></p>
                             </div>
                         </div>
-                        <div id="button" type="submit">
+                        <div id="button">
                             <button
+                                id="login"
                                 class="flex flex-col bg-violet-600 text-center text-white text-sm sm:text-base md:text-lg lg:text-xl m-auto mb-3 py-1 px-10 sm:mb-4 sm:py-1 sm:px-12 md:mb-4 md:py-1 md:px-14 lg:mb-4 lg:py-2 lg:px-16 xl:mb-5 xl:py-2 xl:px-20 rounded-sm sm:rounded-md shadow-lg font-semibold"
+                                type="button"
                             >
                                 Login
                             </button>
@@ -96,6 +98,15 @@
             </form>
         </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="./scripts/login.js"></script>
+        <script src="./scripts/multistep.js"></script>
         <script src="./scripts/scripts.js"></script>
     </body>
 </html>
