@@ -4,8 +4,8 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>User</title>
-        <link
+		<title>Checkout</title>
+		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
 			integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -14,9 +14,8 @@
 		/>
 		<link rel="stylesheet" href="./styles/main.css" />
 	</head>
-	<body class="antialiased min-h-screen relative lg:flex">
+	<body class="antialiased min-h-screen relative lg:flex bg-slate-50" x-data="{open: false}">
 		<!-- NAV/SIDEBAR (LEFT) -->
-
 		<nav
 			class="absolute min-h-full inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 p-3 text-white"
 			:class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': open === false}"
@@ -66,7 +65,6 @@
 		</nav>
 
 		<!-- CONTENT (RIGHT) -->
-
 		<div class="relative z-0 lg:flex-grow">
 			<header class="bg-white border-gray-200 shadow-md flex flex-wrap justify-center items-center mx-auto">
 				<i class="text-2xl fa-solid fa-bars absolute left-5 cursor-pointer lg:hidden" @click="open = true"></i>
@@ -84,69 +82,18 @@
 			<div class="px-5 lg:px-10">
 				<!-- Content goes here! -->
 
-				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">My Profile</h1>
-                
-				<button
-				class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-4 rounded transition-all mb-5"
-				>
-				Edit Profile
-				</button>
-				<div>
-					<div class="flex flex-col">
-						<label
-							class="font-semibold text-xs sm:text-sm md:text-base text-black text-opacity-70"
-							>Username</label
-						>
-						<input
-							placeholder="rakuzen"
-							class="text-black text-xs sm:text-sm md:text-base py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
-							required
-						/>
+				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Checkout Page</h1>
 
-						<label
-							class="font-semibold text-xs sm:text-sm md:text-base text-black text-opacity-70"
-							>First Name</label
-						>
-						<input
-							placeholder="Alex"
-							class="text-black text-xs sm:text-sm md:text-base py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
-							required
-						/>
-						<label
-							class="font-semibold text-xs sm:text-sm md:text-base text-black text-opacity-70"
-							>Last Name</label
-						>
-						<input
-							placeholder="Steven"
-							class="text-black text-xs sm:text-sm md:text-base py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
-							required
-						/>
-						<label
-							class="font-semibold text-xs sm:text-sm md:text-base text-black text-opacity-70"
-							>Email</label
-						>
-						<input
-							placeholder="rakuzen@example.com"
-							class="text-black text-xs sm:text-sm md:text-base py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
-							required
-						/>
-						</div>
-					</div>
-					<button
-					class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-5 rounded transition-all mb-5"
-					>
-					Change Password
-				  	</button>
-				  	<button
-				  	class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-5 rounded transition-all mb-5"
-				  	>
-				  	Sign Out
-					</button>
-				</div>
+				<button
+					class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-4 rounded transition-all mb-5"
+				>
+					Add Item
+				</button>
 			</div>
 		</div>
 
-        <script src="//unpkg.com/alpinejs" defer></script>
-        <script src="./scripts/scripts.js"></script>
+		<!-- Scripts Here! -->
+		<script src="//unpkg.com/alpinejs" defer></script>
+		<script src="./scripts/scripts.js"></script>
 	</body>
 </html>

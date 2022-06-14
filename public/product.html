@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Home</title>
+		<title>Products</title>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -17,7 +17,7 @@
 	<body class="antialiased min-h-screen relative lg:flex bg-slate-50" x-data="{open: false}">
 		<!-- NAV/SIDEBAR (LEFT) -->
 		<nav
-			class="absolute inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 h-screen p-3 text-white"
+			class="absolute min-h-full inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 p-3 text-white"
 			:class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': open === false}"
 		>
 			<div class="flex flex-row justify-end">
@@ -31,7 +31,7 @@
 					<i class="text-xl mr-3 fa-solid fa-table-columns"></i>
 					<span>Dashboard</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./checkout.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-cash-register"></i>
 					<span>Checkout</span>
 				</a>
@@ -39,15 +39,15 @@
 				<hr />
 				<br />
 				<h1 class="block p-3">Transactions</h1>
-				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./history.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-clock-rotate-left"></i>
 					<span>History</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./inbound.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-down"></i>
 					<span>Inbound</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./outbound.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-up"></i>
 					<span>Outbound</span>
 				</a>
@@ -57,7 +57,7 @@
 					<i class="text-xl mr-3 fa-solid fa-box"></i>
 					<span>Products</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./staffPage.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-gear"></i>
 					<span>Admin</span>
 				</a>
@@ -68,8 +68,14 @@
 		<div class="relative z-0 lg:flex-grow">
 			<header class="bg-white border-gray-200 shadow-md flex flex-wrap justify-center items-center mx-auto">
 				<i class="text-2xl fa-solid fa-bars absolute left-5 cursor-pointer lg:hidden" @click="open = true"></i>
-				<a href="#" class="flex items-center px-2 sm:px-4 py-2.5">
-					<img src="./assets/Logo.svg" class="h-8 sm:h-9" alt="Logo" />
+				<a href="#" class="flex items-center px-2 py-2.5">
+					<img src="./assets/Logo.svg" class="h-9" alt="Logo" />
+				</a>
+				<a
+					href="./userProfile.html"
+					class="text-2xl absolute right-5 cursor-pointer rounded-full overflow-hidden"
+				>
+					<img src="./assets/dp.png" class="h-9" alt="profile" />
 				</a>
 			</header>
 
@@ -97,63 +103,81 @@
 								<th class="p-3 text-sm font-semibold tracking-wide text-left">Action</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="bg-white">
-								<td class="p-3 text-sm text-gray-700">
-									<a href="#" class="font-bold text-blue-500 hover:underline">1</a>
-								</td>
-								<td class="p-3 text-sm text-gray-700">CHI001</td>
-								<td class="p-3 text-sm text-gray-700">Chitato Sapi Panggang - 168gr</td>
-								<td class="p-3 text-sm text-gray-700">20</td>
-								<td class="p-3 text-sm text-gray-700">Rp. 18.700</td>
-								<td>Edit</td>
-							</tr>
-							<tr class="bg-gray-100">
-								<td class="p-3 text-sm text-gray-700">
-									<a href="#" class="font-bold text-blue-500 hover:underline">2</a>
-								</td>
-								<td class="p-3 text-sm text-gray-700">CHI002</td>
-								<td class="p-3 text-sm text-gray-700">Chitato Sapi Panggang - 168gr</td>
-								<td class="p-3 text-sm text-gray-700">20</td>
-								<td class="p-3 text-sm text-gray-700">Rp. 18.700</td>
-								<td>Edit</td>
-							</tr>
-							<tr class="bg-white">
-								<td class="p-3 text-sm text-gray-700">
-									<a href="#" class="font-bold text-blue-500 hover:underline">3</a>
-								</td>
-								<td class="p-3 text-sm text-gray-700">CHI003</td>
-								<td class="p-3 text-sm text-gray-700">Chitato Sapi Panggang - 168gr</td>
-								<td class="p-3 text-sm text-gray-700">20</td>
-								<td class="p-3 text-sm text-gray-700">Rp. 18.700</td>
-								<td>Edit</td>
-							</tr>
+						<tbody id="bigProduct">
+							<template id="bigTemplate">
+								<tr class="bg-white">
+									<td class="p-3 text-sm text-gray-700">
+										<a href="#" class="font-bold text-blue-500 hover:underline">1</a>
+									</td>
+									<td class="p-3 text-sm text-gray-700">{{Id}}</td>
+									<td class="p-3 text-sm text-gray-700">
+										<div class="edit" contenteditable="true" id="{{Id}}" data-key="productName">
+											{{productName}}
+										</div>
+									</td>
+									<td class="p-3 text-sm text-gray-700">
+										<div class="edit" contenteditable="true" id="{{Id}}" data-key="quantity">
+											{{quantity}}
+										</div>
+									</td>
+									<td class="p-3 text-sm text-gray-700">
+										Rp.
+										<span class="edit" contentEditable="true" id="{{Id}}" data-key="price"
+											>{{price}}</span
+										>
+									</td>
+									<td><span class="delete" id="{{Id}}">Delete</span></td>
+								</tr>
+							</template>
 						</tbody>
 					</table>
 				</div>
 
-				<div class="grid grid-cols-1 gap-4 md:hidden">
-					<div class="flex bg-white p-4 rounded-lg shadow">
-						<div class="grow pr-5">
-							<div class="flex items-center space-x-2 text-sm">
-								<div>1</div>
-								<div>CHI001</div>
+				<div class="grid grid-cols-1 gap-4 md:hidden" id="smallProduct">
+					<template id="smallTemplate">
+						<div class="flex bg-white p-4 rounded-lg shadow">
+							<div class="grow pr-5">
+								<div class="flex items-center space-x-2 text-sm">
+									<div>{{num}}</div>
+									<div>{{Id}}</div>
+								</div>
+								<div class="edit" contenteditable="true" id="{{Id}}" data-key="productName">
+									{{productName}}
+								</div>
+								<div>
+									Remaining Stock:
+									<span class="edit" contentEditable="true" id="{{Id}}" data-key="quantity"
+										>{{quantity}}</span
+									>
+								</div>
+								<div>
+									Price: Rp.
+									<span class="edit" contentEditable="true" id="{{Id}}" data-key="price"
+										>{{price}}</span
+									>
+								</div>
 							</div>
-							<div>Chitato Sapi Panggang - 168gr</div>
-							<div>Remaining Stock: <span>20</span></div>
-							<div>Price: <span>Rp. 18.700</span></div>
+							<div class="delete" id="{{Id}}">
+								<button class="bg-prim-500 hover:bg-prim-700 text-white font-bold p-2 px-3 rounded">
+									<i class="text-xl fa-solid fa-pen-to-square"></i>
+								</button>
+							</div>
 						</div>
-						<div>
-							<button class="bg-prim-500 hover:bg-prim-700 text-white font-bold p-2 px-3 rounded">
-								<i class="text-xl fa-solid fa-pen-to-square"></i>
-							</button>
-						</div>
-					</div>
+					</template>
 				</div>
 			</div>
 		</div>
 
 		<!-- Scripts Here! -->
 		<script src="//unpkg.com/alpinejs" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+			integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script src="./scripts/listProduct.js" defer></script>
+		<script src="./scripts/scripts.js"></script>
 	</body>
 </html>
