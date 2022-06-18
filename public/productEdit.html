@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Staff</title>
+		<title>Edit Products</title>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -14,9 +14,8 @@
 		/>
 		<link rel="stylesheet" href="./styles/main.css" />
 	</head>
-	<body class="antialiased min-h-screen relative lg:flex">
+	<body class="antialiased min-h-screen relative lg:flex bg-slate-50" x-data="{open: false}">
 		<!-- NAV/SIDEBAR (LEFT) -->
-
 		<nav
 			class="absolute min-h-full inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 p-3 text-white"
 			:class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': open === false}"
@@ -66,7 +65,6 @@
 		</nav>
 
 		<!-- CONTENT (RIGHT) -->
-
 		<div class="relative z-0 lg:flex-grow">
 			<header class="bg-white border-gray-200 shadow-md flex flex-wrap justify-center items-center mx-auto">
 				<i class="text-2xl fa-solid fa-bars absolute left-5 cursor-pointer lg:hidden" @click="open = true"></i>
@@ -84,19 +82,58 @@
 			<div class="px-5 lg:px-10">
 				<!-- Content goes here! -->
 
-				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Staff Dashboard</h1>
+				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Edit Product</h1>
 
-				<button
-					class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-4 rounded transition-all mb-5"
-				>
-					Add Staff
-				</button>
+				<div class="bg-white p-4 rounded-lg shadow">
+					<form action="">
+						<div class="form-group">
+							<label for="productName" class="form-label inline-block mb-5 text-gray-700"></label>
+								Product Title
+							</label>
+							<input
+								type="text"
+								class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+								id="productName"
+								aria-describedby="productName"
+								placeholder="Enter Product Name"
+							/>
+                            <label for="productName" class="form-label inline-block my-5 text-gray-700"></label>
+								Product SKU (Stock Keeping Unit)
+							</label>
+							<input
+								type="text"
+								class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+								id="productSKU"
+								aria-describedby="productSKU"
+								placeholder="Enter Product SKU"
+							/>
+                            <label for="productName" class="form-label inline-block my-5 text-gray-700"></label>
+								Product Quantity
+							</label>
+							<input
+								type="text"
+								class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+								id="productQuantity"
+								aria-describedby="productQuantity"
+								placeholder="Enter Product Quantity"
+							/>
+                            
+                            <label for="productName" class="form-label inline-block my-5 text-gray-700"></label>
+								Product Price
+							</label>
+							<input
+								type="text"
+								class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+								id="productPrice"
+								aria-describedby="productPrice"
+								placeholder="Enter Product Price"
+							/>
 
-				<div class="bg-white absolute container overflow-auto max-w-sm p-3 shadow rounded-lg animate-sliding">
-					<h2 class="font-bold text-lg px-1">Jose Giancarlos</h2>
-					<h2 class="font-semibold text-lg px-1">Male</h2>
-					<h2 class="font-semibold text-lg px-1">0812-1817-1913</h2>
-					<h2 class="font-semibold text-lg px-1">Jl Kebun Jeruk no. 17 RT/RW 001/002</h2>
+                            <button type="button" class="save-btn my-5 w-full bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-4 rounded transition-all mb-5" id="addProduct">
+                                Save
+                            </button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -118,6 +155,7 @@
 		></script>
 
 		<!-- Custom Scripts Here -->
-		<script src="./scripts/scripts.js"></script>
+        <script src="./scripts/scripts.js"></script>
+        <script src="./scripts/editProduct.js" defer></script>
 	</body>
 </html>
