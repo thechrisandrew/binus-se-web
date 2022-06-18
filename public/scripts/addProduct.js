@@ -1,25 +1,29 @@
-$(function() {
+$(function () {
+	function addProduct() {
+		var data = {
+			productId: $("#productSKU").val(),
+			productName: $("#productName").val(),
+			productPrice: $("#productPrice").val(),
+			productStock: $("#productQuantity").val(),
+		};
 
-    function addProduct() {
-        var product = {
-            productName: $('#productName').val(),
-            price: $('#productPrice').val(),
-            id: $("#productSKU").val(),
-            quantity: $("#productQuantity").val()
-        };
+		$.ajax({
+			type: "POST",
+			url: "http://127.0.0.1:3000/product/",
+			data: data,
+			success: function (data, status) {
+				// console.log(data);
+				if (data != "Something went wrong!") {
+					window.location.href = "./product.html";
+				}
+			},
+			error: function (data, status) {
+				// console.log(data);
+				// console.log(status);
+				alert("Invalid data or Something went wrong!");
+			},
+		});
+	}
 
-        $.ajax({
-            type: 'POST',
-            url: 'http://127.0.0.1:3000/product/',
-            data: product,
-            success: function(data,status) {
-                if(data!="Something went wrong!"){
-                    window.location.href = './product.html';
-                }
-            }
-        });
-    }
-
-    $('#addProduct').click(addProduct);
-
+	$("#addProduct").click(addProduct);
 });
