@@ -96,6 +96,7 @@ $(document).ready(function () {
     };
 
     var counter = 0;
+    var total = 0;
 
     var checkout = [];
 
@@ -113,6 +114,9 @@ $(document).ready(function () {
         var smallList = $("#smallList");
         bigList.append(Mustache.render(bigTemplate, product));
         smallList.append(Mustache.render(smallTemplate, product));
+
+        $("#grand-total").text(total);
+        $("#confirm-total").text(total);
     }
 
     function getProductDetails(id) {
@@ -131,6 +135,8 @@ $(document).ready(function () {
                 currentProduct.productName = data[0].productName;
                 currentProduct.productPrice = data[0].productPrice;
                 currentProduct.subtotal = data[0].productPrice * currentProduct.quantity;
+
+                total = total + currentProduct.subtotal;
 
                 counter = counter + 1;
 
@@ -192,5 +198,26 @@ $(document).ready(function () {
                 console.log(status);
             },
         });
+    });
+
+    $(document).on("click", ".delete-btn", null, function (event) {
+        // console.log($(this).closest("tr"));
+        event.preventDefault();
+
+        // console.log($(`#subtotal${this.id}`).text());
+        // console.log($(this).parent().parent().prev().text());
+        // total = total - $(this).parent().parent().prev().text();
+        total = total - $(`#subtotal${this.id}`).text();
+
+        var big = $(`#big${this.id}`);
+        var small = $(`#small${this.id}`);
+
+        big.remove();
+        small.remove();
+
+        // console.log("test");
+
+        $("#grand-total").text(total);
+        $("#confirm-total").text(total);
     });
 });

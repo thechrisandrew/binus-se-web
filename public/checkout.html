@@ -309,7 +309,9 @@
                                     <td class="p-3 text-sm text-gray-700">{{productName}}</td>
                                     <td class="p-3 text-sm text-gray-700">{{productPrice}}</td>
                                     <td class="p-3 text-sm text-gray-700">{{quantity}}</td>
-                                    <td class="p-3 text-sm text-gray-700">{{subtotal}}</td>
+                                    <td class="p-3 text-sm text-gray-700" id="subtotal{{productId}}">
+                                        {{subtotal}}
+                                    </td>
                                     <td>
                                         <div class="flex flex-row items-center gap-1">
                                             <!-- <span class="delete" id="{{Id}}">Delete</span> -->
@@ -335,14 +337,18 @@
                                     <div>{{num}}</div>
                                     <div>{{productId}}</div>
                                 </div>
-                                <div class="edit" contenteditable="true" id="{{Id}}" data-key="productName">
-                                    {{productName}}
+                                <div>{{productName}}</div>
+                                <div>
+                                    Price (Each):
+                                    <span>{{productPrice}}</span>
                                 </div>
                                 <div>
                                     Quantity:
-                                    <span class="edit" contentEditable="true" id="{{Id}}" data-key="quantity"
-                                        >{{quantity}}</span
-                                    >
+                                    <span>{{quantity}}</span>
+                                </div>
+                                <div>
+                                    subtotal:
+                                    <span>{{subtotal}}</span>
                                 </div>
                             </div>
                             <div class="flex gap-1 items-center">
@@ -357,13 +363,75 @@
                     </template>
                 </div>
 
+                <h1 class="font-medium text-2xl mt-10">
+                    Amount to be paid: Rp.<span id="grand-total">0</span>
+                </h1>
+
                 <button
                     type="button"
                     class="inline-block px-6 py-2.5 mt-10 bg-prim-500 text-white font-bold leading-tight rounded shadow-md hover:bg-prim-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-700 active:shadow-lg transition duration-150 ease-in-out"
-                    id="checkout-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modal2"
                 >
                     Confirm Checkout
                 </button>
+
+                <div
+                    class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                    id="modal2"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalCenterTitle"
+                    aria-modal="true"
+                    role="dialog"
+                >
+                    <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+                        <div
+                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+                        >
+                            <div
+                                class="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md"
+                            >
+                                <h5
+                                    class="text-xl font-medium leading-normal text-gray-800"
+                                    id="exampleModalScrollableLabel"
+                                >
+                                    Insert Product
+                                </h5>
+                            </div>
+                            <div class="modal-body relative px-4">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-full flex flex-col items-center">
+                                        <div class="w-full">
+                                            <h1 class="font-medium text-2xl">
+                                                Amount to be paid: Rp.<span id="confirm-total">0</span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 rounded-b-md gap-1"
+                            >
+                                <button
+                                    type="button"
+                                    class="inline-block px-6 py-2.5 bg-red-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+                                    data-bs-dismiss="modal"
+                                    id="close-btn"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="button"
+                                    class="inline-block px-6 py-2.5 bg-prim-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-prim-700 hover:shadow-lg focus:bg-prim-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-800 active:shadow-lg transition duration-150 ease-in-out"
+                                    data-bs-dismiss="modal"
+                                    id="checkout-btn"
+                                >
+                                    Confirm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
