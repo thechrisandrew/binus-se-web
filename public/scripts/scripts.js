@@ -1,6 +1,6 @@
 $(function () {
 	let token = getCookie("token");
-	if (token === undefined) {
+	if (token === undefined || token === "") {
 		window.location.href = "http://127.0.0.1:5500/public/login.html";
 	} else {
 		console.log("login success");

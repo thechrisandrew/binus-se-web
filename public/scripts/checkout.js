@@ -191,10 +191,15 @@ $(document).ready(function () {
                     ?.split("=")[1],
             },
             success: function (data, status) {
-                console.log("successfully created Transaction");
+                // console.log(data, status);
+                alert("successfully created Transaction");
+                window.location.href = "./checkout.html";
+                // console.log("successfully created Transaction");
             },
             error: function (data, status) {
-                console.log(data);
+                // console.log(data);
+                alert("Product stock is not enough!");
+                window.location.href = './checkout.html';
                 console.log(status);
             },
         });
