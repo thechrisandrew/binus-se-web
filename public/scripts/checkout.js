@@ -160,19 +160,15 @@ $(document).ready(function () {
 
 		console.log(JSON.stringify(data));
 
-		const token = document.cookie
-			.split("; ")
-			.find((row) => row.startsWith("token="))
-			?.split("=")[1];
-
-		console.log(token);
-
 		$.ajax({
 			type: "POST",
 			url: `http://127.0.0.1:3000/checkout/`,
 			data: data,
 			headers: {
-				token: token,
+				token: document.cookie
+					.split("; ")
+					.find((row) => row.startsWith("token="))
+					?.split("=")[1],
 			},
 			success: function (data, status) {
 				console.log("successfully created Transaction");
