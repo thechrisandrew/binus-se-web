@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Dashboard</title>
+		<title>User</title>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -12,11 +12,11 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
-		<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" />
 		<link rel="stylesheet" href="./styles/main.css" />
 	</head>
-	<body class="antialiased relative lg:flex bg-slate-50" x-data="{open: false}">
+	<body class="antialiased min-h-screen relative lg:flex">
 		<!-- NAV/SIDEBAR (LEFT) -->
+
 		<nav
 			class="absolute min-h-full inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 p-3 text-white"
 			:class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': open === false}"
@@ -44,15 +44,13 @@
 					<i class="text-xl mr-3 fa-solid fa-clock-rotate-left"></i>
 					<span>History</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./inbound.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-down"></i>
 					<span>Inbound</span>
-					<span class="bg-gray-500 px-2 py-1 rounded-full text-xs">WIP</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./outbound.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-up"></i>
 					<span>Outbound</span>
-					<span class="bg-gray-500 px-2 py-1 rounded-full text-xs">WIP</span>
 				</a>
 				<br />
 				<hr />
@@ -60,15 +58,15 @@
 					<i class="text-xl mr-3 fa-solid fa-box"></i>
 					<span>Products</span>
 				</a>
-				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+				<a href="./staffPage.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
 					<i class="text-xl mr-3 fa-solid fa-gear"></i>
 					<span>Admin</span>
-					<span class="bg-gray-500 px-2 py-1 rounded-full text-xs">WIP</span>
 				</a>
 			</div>
 		</nav>
 
 		<!-- CONTENT (RIGHT) -->
+
 		<div class="relative z-0 lg:flex-grow">
 			<header class="bg-white border-gray-200 shadow-md flex flex-wrap justify-center items-center mx-auto">
 				<i class="text-2xl fa-solid fa-bars absolute left-5 cursor-pointer lg:hidden" @click="open = true"></i>
@@ -86,80 +84,60 @@
 			<div class="px-5 lg:px-10">
 				<!-- Content goes here! -->
 
-				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Dashboard</h1>
-
-				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
-					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-3">Today Sales</div>
-						<hr class="mb-3" />
-						<div class="text-gray-700 text-base">Total Income: Rp. <span id="total-today">0</span></div>
+				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">My Profile</h1>
+				<div>
+					<div class="flex flex-col">
+						<label class="font-semibold text-xs sm:text-sm md:text-base text-black text-opacity-70"
+							>First Name</label
+						>
+						<input
+							placeholder="Alex"
+							class="text-black text-xs sm:text-sm md:text-base py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
+							required
+						/>
+						<label class="font-semibold text-xs sm:text-sm md:text-base text-black text-opacity-70"
+							>Last Name</label
+						>
+						<input
+							placeholder="Steven"
+							class="text-black text-xs sm:text-sm md:text-base py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
+							required
+						/>
+						<label class="font-semibold text-xs sm:text-sm md:text-base text-black text-opacity-70"
+							>Email</label
+						>
+						<input
+							placeholder="rakuzen@example.com"
+							class="text-black text-xs sm:text-sm md:text-base py-1 lg:py-2 px-2 rounded-md sm:rounded-lg text border-2 border-slate-200 mb-4 focus:outline-none focus:border-violet-600"
+							required
+						/>
 					</div>
+					<button
+						id="edit-btn"
+						class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-5 rounded transition-all mb-5"
+					>
+						Edit Profile
+					</button>
+					<button
+						id="save-btn"
+						class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-5 rounded transition-all mb-5 hidden"
+					>
+						Save Edit
+					</button>
+					<button
+						id="change-pw-btn"
+						class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-5 rounded transition-all mb-5"
+					>
+						Change Password
+					</button>
+
+					<button
+						id="signOut"
+						class="bg-prim-500 hover:bg-prim-700 text-white font-bold py-2 px-5 rounded transition-all mb-5"
+					>
+						Sign Out
+					</button>
 				</div>
-
-				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
-					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-3">Yesterday Sales</div>
-						<hr class="mb-3" />
-						<div class="text-gray-700 text-base">Total Income: Rp. <span id="total-yesterday">0</span></div>
-					</div>
-				</div>
-
-				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
-					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-3">Item Sales Statistics</div>
-						<hr class="mb-3" />
-						<div class="max-w-lg ct-chart ct-perfect-fourth"></div>
-					</div>
-				</div>
-
-				<!-- <div class="w-full mb-1 rounded overflow-hidden shadow-md">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-3">Recent Transactions</div>
-                        <hr class="mb-3" />
-                        <div class="card">
-                            <table class="w-full table-auto">
-                                <tr>
-                                    <td class="p-2">3x</td>
-                                    <td class="p-2">Chitato Sapi Panggang - 168gr</td>
-                                    <td class="p-2">Rp 56,100</td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2">2x</td>
-                                    <td class="p-2">Coca Cola - 350ml</td>
-                                    <td class="p-2">Rp 30,400</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <hr />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="p-2" colspan="2">Total Payment:</td>
-                                    <td class="p-2">Rp 86,500</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div> -->
-
-				<!-- <div class="w-full mb-1 rounded overflow-hidden shadow-md">
-					<div class="px-6 py-4">
-						<div class="font-bold text-xl mb-3">Best Sellers</div>
-						<hr class="mb-3" />
-						<div>
-							<div class="rounded overflow-hidden shadow mb-5">
-								<div class="px-6 py-4">
-									<div class="font-bold text-lg">Chitato Sapi Panggang - 168gr</div>
-								</div>
-							</div>
-							<div class="rounded overflow-hidden shadow mb-5">
-								<div class="px-6 py-4">
-									<div class="font-bold text-lg">Coca Cola - 350ml</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
 			</div>
 		</div>
 
@@ -181,6 +159,6 @@
 
 		<!-- Custom Scripts Here -->
 		<script src="./scripts/scripts.js"></script>
-		<script src="./scripts/dashboard.js"></script>
+		<script src="./scripts/userProfile.js"></script>
 	</body>
 </html>

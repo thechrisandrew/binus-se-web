@@ -1,459 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Checkout</title>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        />
-        <link rel="stylesheet" href="./styles/main.css" />
-        <style>
-            .select-box .options-container {
-                /* background: #2f3640;
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Checkout</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+			integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="./styles/main.css" />
+		<style>
+			.select-box .options-container {
+				/* background: #2f3640;
 				color: #f5f6fa; */
-                max-height: 0;
-                width: 100%;
-                opacity: 0;
-                transition: all 0.4s;
-                border-radius: 8px;
-                overflow: hidden;
+				max-height: 0;
+				width: 100%;
+				opacity: 0;
+				transition: all 0.4s;
+				border-radius: 8px;
+				overflow: hidden;
 
-                order: 1;
-            }
+				order: 1;
+			}
 
-            .select-box .options-container.active {
-                max-height: 240px;
-                opacity: 1;
-                overflow-y: scroll;
-                margin-top: 54px;
-            }
+			.select-box .options-container.active {
+				max-height: 240px;
+				opacity: 1;
+				overflow-y: scroll;
+				margin-top: 54px;
+			}
 
-            .select-box .options-container.active + .selected::after {
-                transform: rotateX(180deg);
-                top: -6px;
-            }
+			.select-box .options-container.active + .selected::after {
+				transform: rotateX(180deg);
+				top: -6px;
+			}
 
-            .select-box .options-container::-webkit-scrollbar {
-                width: 8px;
-                background: #343434;
-                border-radius: 0 8px 8px 0;
-            }
+			.select-box .options-container::-webkit-scrollbar {
+				width: 8px;
+				background: #343434;
+				border-radius: 0 8px 8px 0;
+			}
 
-            .select-box .options-container::-webkit-scrollbar-thumb {
-                background: #525861;
-                border-radius: 0 8px 8px 0;
-            }
+			.select-box .options-container::-webkit-scrollbar-thumb {
+				background: #525861;
+				border-radius: 0 8px 8px 0;
+			}
 
-            .select-box label {
-                cursor: pointer;
-            }
+			.select-box label {
+				cursor: pointer;
+			}
 
-            .select-box .option .radio {
-                display: none;
-            }
+			.select-box .option .radio {
+				display: none;
+			}
 
-            .select-box .options-container.active ~ .search-box input {
-                opacity: 1;
-                pointer-events: auto;
-            }
-        </style>
-    </head>
-    <body class="antialiased min-h-screen relative lg:flex bg-slate-50" x-data="{open: false}">
-        <!-- NAV/SIDEBAR (LEFT) -->
-        <nav
-            class="absolute min-h-full inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 p-3 text-white"
-            :class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': open === false}"
-        >
-            <div class="flex flex-row justify-end">
-                <button class="px-3 focus:outline-none rounded-md lg:hidden" @click="open = false">
-                    <i class="text-2xl fa-solid fa-chevron-left"></i>
-                </button>
-            </div>
+			.select-box .options-container.active ~ .search-box input {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		</style>
+	</head>
+	<body class="antialiased min-h-screen relative lg:flex bg-slate-50" x-data="{open: false}">
+		<!-- NAV/SIDEBAR (LEFT) -->
+		<nav
+			class="absolute min-h-full inset-0 transform -translate-x-full lg:transform-none lg:opacity-100 duration-200 lg:relative z-10 w-64 bg-prim-600 p-3 text-white"
+			:class="{'translate-x-0 ease-in opacity-100':open === true, '-translate-x-full ease-out opacity-0': open === false}"
+		>
+			<div class="flex flex-row justify-end">
+				<button class="px-3 focus:outline-none rounded-md lg:hidden" @click="open = false">
+					<i class="text-2xl fa-solid fa-chevron-left"></i>
+				</button>
+			</div>
 
-            <div class="mt-6 lg:mt-12">
-                <a href="./index.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
-                    <i class="text-xl mr-3 fa-solid fa-table-columns"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a href="./checkout.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
-                    <i class="text-xl mr-3 fa-solid fa-cash-register"></i>
-                    <span>Checkout</span>
-                </a>
-                <br />
-                <hr />
-                <br />
-                <h1 class="block p-3">Transactions</h1>
-                <a
-                    href="./history.html"
-                    class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all"
-                >
-                    <i class="text-xl mr-3 fa-solid fa-clock-rotate-left"></i>
-                    <span>History</span>
-                </a>
-                <a
-                    href="./inbound.html"
-                    class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all"
-                >
-                    <i class="text-xl mr-3 fa-solid fa-solid fa-arrow-down"></i>
-                    <span>Inbound</span>
-                </a>
-                <a
-                    href="./outbound.html"
-                    class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all"
-                >
-                    <i class="text-xl mr-3 fa-solid fa-solid fa-arrow-up"></i>
-                    <span>Outbound</span>
-                </a>
-                <br />
-                <hr />
-                <a href="./product.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
-                    <i class="text-xl mr-3 fa-solid fa-box"></i>
-                    <span>Products</span>
-                </a>
-                <a href="./staffPage.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
-                    <i class="text-xl mr-3 fa-solid fa-gear"></i>
-                    <span>Admin</span>
-                </a>
-            </div>
-        </nav>
+			<div class="mt-6 lg:mt-12">
+				<a href="./index.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+					<i class="text-xl mr-3 fa-solid fa-table-columns"></i>
+					<span>Dashboard</span>
+				</a>
+				<a href="./checkout.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+					<i class="text-xl mr-3 fa-solid fa-cash-register"></i>
+					<span>Checkout</span>
+				</a>
+				<br />
+				<hr />
+				<br />
+				<h1 class="block p-3">Transactions</h1>
+				<a href="./history.html" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+					<i class="text-xl mr-3 fa-solid fa-clock-rotate-left"></i>
+					<span>History</span>
+				</a>
+				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-down"></i>
+					<span>Inbound</span>
+					<span class="bg-gray-500 px-2 py-1 rounded-full text-xs">WIP</span>
+				</a>
+				<a href="#" class="block p-3 mt-5 ml-5 hover:bg-prim-400 rounded-md transition-all">
+					<i class="text-xl mr-3 fa-solid fa-solid fa-arrow-up"></i>
+					<span>Outbound</span>
+					<span class="bg-gray-500 px-2 py-1 rounded-full text-xs">WIP</span>
+				</a>
+				<br />
+				<hr />
+				<a href="./product.html" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+					<i class="text-xl mr-3 fa-solid fa-box"></i>
+					<span>Products</span>
+				</a>
+				<a href="#" class="block p-3 mt-5 hover:bg-prim-400 rounded-md transition-all">
+					<i class="text-xl mr-3 fa-solid fa-gear"></i>
+					<span>Admin</span>
+					<span class="bg-gray-500 px-2 py-1 rounded-full text-xs">WIP</span>
+				</a>
+			</div>
+		</nav>
 
-        <!-- CONTENT (RIGHT) -->
-        <div class="relative lg:flex-grow">
-            <header
-                class="bg-white border-gray-200 shadow-md flex flex-wrap justify-center items-center mx-auto"
-            >
-                <i
-                    class="text-2xl fa-solid fa-bars absolute left-5 cursor-pointer lg:hidden"
-                    @click="open = true"
-                ></i>
-                <a href="#" class="flex items-center px-2 py-2.5">
-                    <img src="./assets/Logo.svg" class="h-9" alt="Logo" />
-                </a>
-                <a
-                    href="./userProfile.html"
-                    class="text-2xl absolute right-5 cursor-pointer rounded-full overflow-hidden"
-                >
-                    <img src="./assets/dp.png" class="h-9" alt="profile" />
-                </a>
-            </header>
+		<!-- CONTENT (RIGHT) -->
+		<div class="relative lg:flex-grow">
+			<header class="bg-white border-gray-200 shadow-md flex flex-wrap justify-center items-center mx-auto">
+				<i class="text-2xl fa-solid fa-bars absolute left-5 cursor-pointer lg:hidden" @click="open = true"></i>
+				<a href="#" class="flex items-center px-2 py-2.5">
+					<img src="./assets/Logo.svg" class="h-9" alt="Logo" />
+				</a>
+				<a
+					href="./userProfile.html"
+					class="text-2xl absolute right-5 cursor-pointer rounded-full overflow-hidden"
+				>
+					<img src="./assets/dp.png" class="h-9" alt="profile" />
+				</a>
+			</header>
 
-            <div class="px-5 lg:px-10">
-                <!-- Content goes here! -->
+			<div class="px-5 lg:px-10">
+				<!-- Content goes here! -->
 
-                <h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Checkout Page</h1>
+				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Checkout Page</h1>
 
-                <div class="">
-                    <button
-                        type="button"
-                        class="inline-block px-6 py-2.5 bg-prim-500 text-white font-bold leading-tight rounded shadow-md hover:bg-prim-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-700 active:shadow-lg transition duration-150 ease-in-out"
-                        data-bs-toggle="modal"
-                        data-bs-target="#modal1"
-                    >
-                        Add item
-                    </button>
-                </div>
+				<div class="">
+					<button
+						type="button"
+						class="inline-block px-6 py-2.5 bg-prim-500 text-white font-bold leading-tight rounded shadow-md hover:bg-prim-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-700 active:shadow-lg transition duration-150 ease-in-out"
+						data-bs-toggle="modal"
+						data-bs-target="#modal1"
+					>
+						Add item
+					</button>
+				</div>
 
-                <!-- MODAL -->
+				<!-- MODAL -->
 
-                <div
-                    class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                    id="modal1"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalCenterTitle"
-                    aria-modal="true"
-                    role="dialog"
-                >
-                    <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-                        <div
-                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
-                        >
-                            <div
-                                class="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md"
-                            >
-                                <h5
-                                    class="text-xl font-medium leading-normal text-gray-800"
-                                    id="exampleModalScrollableLabel"
-                                >
-                                    Insert Product
-                                </h5>
-                            </div>
-                            <div class="modal-body relative px-4">
-                                <div class="flex flex-col items-center">
-                                    <div class="w-full flex flex-col items-center">
-                                        <div class="w-full">
-                                            <p class="my-2 text-gray-700">Select Product</p>
-                                            <!-- SELECT BOX WITH SEARCH HERE -->
-                                            <div class="select-box relative flex flex-col">
-                                                <div class="options-container border-2">
-                                                    <template id="optionsTemplate">
-                                                        <div
-                                                            class="option px-5 py-2 hover:bg-gray-200 cursor-pointer"
-                                                        >
-                                                            <input
-                                                                type="radio"
-                                                                class="radio"
-                                                                id="{{productId}}"
-                                                                name="category"
-                                                            />
-                                                            <label for="{{productId}}">
-                                                                <span class="text-gray-700 option-id">
-                                                                    {{productId}}</span
-                                                                >
-                                                                <span class="option-name"
-                                                                    >{{productName}}</span
-                                                                >
-                                                            </label>
-                                                        </div>
-                                                    </template>
-                                                </div>
+				<div
+					class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+					id="modal1"
+					tabindex="-1"
+					aria-labelledby="exampleModalCenterTitle"
+					aria-modal="true"
+					role="dialog"
+				>
+					<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+						<div
+							class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+						>
+							<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md">
+								<h5
+									class="text-xl font-medium leading-normal text-gray-800"
+									id="exampleModalScrollableLabel"
+								>
+									Insert Product
+								</h5>
+							</div>
+							<div class="modal-body relative px-4">
+								<div class="flex flex-col items-center">
+									<div class="w-full flex flex-col items-center">
+										<div class="w-full">
+											<p class="my-2 text-gray-700">Select Product</p>
+											<!-- SELECT BOX WITH SEARCH HERE -->
+											<div class="select-box relative flex flex-col">
+												<div class="options-container border-2">
+													<template id="optionsTemplate">
+														<div class="option px-5 py-2 hover:bg-gray-200 cursor-pointer">
+															<input
+																type="radio"
+																class="radio"
+																id="{{productId}}"
+																name="category"
+															/>
+															<label for="{{productId}}">
+																<span class="text-gray-700 option-id">
+																	{{productId}}</span
+																>
+																<span class="option-name">{{productName}}</span>
+															</label>
+														</div>
+													</template>
+												</div>
 
-                                                <div
-                                                    class="selected border-2 rounded-md px-5 py-2 cursor-pointer relative flex justify-between items-center"
-                                                >
-                                                    <div id="selectedLabel">
-                                                        <span class="text-gray-700" id="selectedId"
-                                                            >Select</span
-                                                        >
-                                                        <span id="selectedName"></span>
-                                                    </div>
+												<div
+													class="selected border-2 rounded-md px-5 py-2 cursor-pointer relative flex justify-between items-center"
+												>
+													<div id="selectedLabel">
+														<span class="text-gray-700" id="selectedId">Select</span>
+														<span id="selectedName"></span>
+													</div>
 
-                                                    <i class="fa-solid fa-chevron-down"></i>
-                                                </div>
+													<i class="fa-solid fa-chevron-down"></i>
+												</div>
 
-                                                <div class="search-box">
-                                                    <input
-                                                        class="w-full mt-1 px-5 py-2 opacity-0 z-10 border-2 rounded-md absolute hidden focus:outline-none"
-                                                        type="text"
-                                                        placeholder="Start Typing..."
-                                                    />
-                                                </div>
-                                            </div>
+												<div class="search-box">
+													<input
+														class="w-full mt-1 px-5 py-2 opacity-0 z-10 border-2 rounded-md absolute hidden focus:outline-none"
+														type="text"
+														placeholder="Start Typing..."
+													/>
+												</div>
+											</div>
 
-                                            <label
-                                                for="quantity"
-                                                class="form-label inline-block my-2 text-gray-700"
-                                            >
-                                                Quantity
-                                            </label>
-                                            <input
-                                                type="number"
-                                                class="form-control block w-full px-5 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                                id="selectedQuantity"
-                                                aria-describedby="quantity"
-                                                placeholder="Enter Quantity"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 rounded-b-md gap-1"
-                            >
-                                <button
-                                    type="button"
-                                    class="inline-block px-6 py-2.5 bg-red-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
-                                    data-bs-dismiss="modal"
-                                    id="close-btn"
-                                >
-                                    Close
-                                </button>
-                                <button
-                                    type="button"
-                                    class="inline-block px-6 py-2.5 bg-prim-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-prim-700 hover:shadow-lg focus:bg-prim-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-800 active:shadow-lg transition duration-150 ease-in-out"
-                                    data-bs-dismiss="modal"
-                                    id="confirm-btn"
-                                >
-                                    Confirm
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+											<label for="quantity" class="form-label inline-block my-2 text-gray-700">
+												Quantity
+											</label>
+											<input
+												type="number"
+												class="form-control block w-full px-5 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+												id="selectedQuantity"
+												aria-describedby="quantity"
+												placeholder="Enter Quantity"
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div
+								class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 rounded-b-md gap-1"
+							>
+								<button
+									type="button"
+									class="inline-block px-6 py-2.5 bg-red-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+									data-bs-dismiss="modal"
+									id="close-btn"
+								>
+									Close
+								</button>
+								<button
+									type="button"
+									class="inline-block px-6 py-2.5 bg-prim-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-prim-700 hover:shadow-lg focus:bg-prim-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-800 active:shadow-lg transition duration-150 ease-in-out"
+									data-bs-dismiss="modal"
+									id="confirm-btn"
+								>
+									Confirm
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
-                <h1 class="font-medium leading-tight text-2xl mt-8 mb-5">Checkout Lists</h1>
+				<h1 class="font-medium leading-tight text-2xl mt-8 mb-5">Checkout Lists</h1>
 
-                <div class="overflow-auto rounded-lg shadow hidden md:block">
-                    <table class="w-full">
-                        <thead class="bg-gray-100 border-b-2 border-gray-200">
-                            <tr>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left">No.</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left">SKU</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left">
-                                    Product Name
-                                </th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left">
-                                    Price (Each)
-                                </th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left">Quantity</th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left">
-                                    Price (subtotal )
-                                </th>
-                                <th class="p-3 text-sm font-semibold tracking-wide text-left">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="bigList">
-                            <template id="bigTemplate">
-                                <tr class="bg-white" id="big{{productId}}">
-                                    <td class="p-3 text-sm text-gray-700">
-                                        <a href="#" class="font-bold text-blue-500 hover:underline"
-                                            >{{num}}</a
-                                        >
-                                    </td>
-                                    <td class="p-3 text-sm text-gray-700">{{productId}}</td>
-                                    <td class="p-3 text-sm text-gray-700">{{productName}}</td>
-                                    <td class="p-3 text-sm text-gray-700">{{productPrice}}</td>
-                                    <td class="p-3 text-sm text-gray-700">{{quantity}}</td>
-                                    <td class="p-3 text-sm text-gray-700" id="subtotal{{productId}}">
-                                        {{subtotal}}
-                                    </td>
-                                    <td>
-                                        <div class="flex flex-row items-center gap-1">
-                                            <!-- <span class="delete" id="{{Id}}">Delete</span> -->
-                                            <button
-                                                id="{{productId}}"
-                                                class="delete-btn flex flex-row items-center content-center bg-prim-500 hover:bg-prim-700 text-white font-bold px-2 py-1 rounded"
-                                            >
-                                                <i class="text-sm fa-solid fa-trash-can"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </template>
-                        </tbody>
-                    </table>
-                </div>
+				<div class="overflow-auto rounded-lg shadow hidden md:block">
+					<table class="w-full">
+						<thead class="bg-gray-100 border-b-2 border-gray-200">
+							<tr>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">No.</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">SKU</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">Product Name</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">Price (Each)</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">Quantity</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">Price (subtotal )</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">Action</th>
+							</tr>
+						</thead>
+						<tbody id="bigList">
+							<template id="bigTemplate">
+								<tr class="bg-white" id="big{{productId}}">
+									<td class="p-3 text-sm text-gray-700">
+										<a href="#" class="font-bold text-blue-500 hover:underline">{{num}}</a>
+									</td>
+									<td class="p-3 text-sm text-gray-700">{{productId}}</td>
+									<td class="p-3 text-sm text-gray-700">{{productName}}</td>
+									<td class="p-3 text-sm text-gray-700">{{productPrice}}</td>
+									<td class="p-3 text-sm text-gray-700">{{quantity}}</td>
+									<td class="p-3 text-sm text-gray-700" id="subtotal{{productId}}">{{subtotal}}</td>
+									<td>
+										<div class="flex flex-row items-center gap-1">
+											<!-- <span class="delete" id="{{Id}}">Delete</span> -->
+											<button
+												id="{{productId}}"
+												class="delete-btn flex flex-row items-center content-center bg-prim-500 hover:bg-prim-700 text-white font-bold px-2 py-1 rounded"
+											>
+												<i class="text-sm fa-solid fa-trash-can"></i>
+											</button>
+										</div>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</div>
 
-                <div class="grid grid-cols-1 gap-4 md:hidden" id="smallList">
-                    <template id="smallTemplate">
-                        <div id="small{{productId}}" class="flex bg-white p-4 rounded-lg shadow">
-                            <div class="grow pr-5">
-                                <div class="flex items-center space-x-2 text-sm">
-                                    <div>{{num}}</div>
-                                    <div>{{productId}}</div>
-                                </div>
-                                <div>{{productName}}</div>
-                                <div>
-                                    Price (Each):
-                                    <span>{{productPrice}}</span>
-                                </div>
-                                <div>
-                                    Quantity:
-                                    <span>{{quantity}}</span>
-                                </div>
-                                <div>
-                                    subtotal:
-                                    <span>{{subtotal}}</span>
-                                </div>
-                            </div>
-                            <div class="flex gap-1 items-center">
-                                <button
-                                    id="{{productId}}"
-                                    class="delete-btn flex flex-row items-center content-center bg-prim-500 hover:bg-prim-700 text-white font-bold px-2 py-1 rounded"
-                                >
-                                    <i class="text-sm fa-solid fa-trash-can"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </template>
-                </div>
+				<div class="grid grid-cols-1 gap-4 md:hidden" id="smallList">
+					<template id="smallTemplate">
+						<div id="small{{productId}}" class="flex bg-white p-4 rounded-lg shadow">
+							<div class="grow pr-5">
+								<div class="flex items-center space-x-2 text-sm">
+									<div>{{num}}</div>
+									<div>{{productId}}</div>
+								</div>
+								<div>{{productName}}</div>
+								<div>
+									Price (Each):
+									<span>{{productPrice}}</span>
+								</div>
+								<div>
+									Quantity:
+									<span>{{quantity}}</span>
+								</div>
+								<div>
+									subtotal:
+									<span>{{subtotal}}</span>
+								</div>
+							</div>
+							<div class="flex gap-1 items-center">
+								<button
+									id="{{productId}}"
+									class="delete-btn flex flex-row items-center content-center bg-prim-500 hover:bg-prim-700 text-white font-bold px-2 py-1 rounded"
+								>
+									<i class="text-sm fa-solid fa-trash-can"></i>
+								</button>
+							</div>
+						</div>
+					</template>
+				</div>
 
-                <h1 class="font-medium text-2xl mt-10">
-                    Amount to be paid: Rp.<span id="grand-total">0</span>
-                </h1>
+				<h1 class="font-medium text-2xl mt-10">Amount to be paid: Rp.<span id="grand-total">0</span></h1>
 
-                <button
-                    type="button"
-                    class="inline-block px-6 py-2.5 mt-10 bg-prim-500 text-white font-bold leading-tight rounded shadow-md hover:bg-prim-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-700 active:shadow-lg transition duration-150 ease-in-out"
-                    data-bs-toggle="modal"
-                    data-bs-target="#modal2"
-                >
-                    Confirm Checkout
-                </button>
+				<button
+					type="button"
+					class="inline-block px-6 py-2.5 mt-10 bg-prim-500 text-white font-bold leading-tight rounded shadow-md hover:bg-prim-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-700 active:shadow-lg transition duration-150 ease-in-out"
+					data-bs-toggle="modal"
+					data-bs-target="#modal2"
+				>
+					Confirm Checkout
+				</button>
 
-                <div
-                    class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                    id="modal2"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalCenterTitle"
-                    aria-modal="true"
-                    role="dialog"
-                >
-                    <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-                        <div
-                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
-                        >
-                            <div
-                                class="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md"
-                            >
-                                <h5
-                                    class="text-xl font-medium leading-normal text-gray-800"
-                                    id="exampleModalScrollableLabel"
-                                >
-                                    Insert Product
-                                </h5>
-                            </div>
-                            <div class="modal-body relative px-4">
-                                <div class="flex flex-col items-center">
-                                    <div class="w-full flex flex-col items-center">
-                                        <div class="w-full">
-                                            <h1 class="font-medium text-2xl">
-                                                Amount to be paid: Rp.<span id="confirm-total">0</span>
-                                            </h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 rounded-b-md gap-1"
-                            >
-                                <button
-                                    type="button"
-                                    class="inline-block px-6 py-2.5 bg-red-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
-                                    data-bs-dismiss="modal"
-                                    id="close-btn"
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="button"
-                                    class="inline-block px-6 py-2.5 bg-prim-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-prim-700 hover:shadow-lg focus:bg-prim-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-800 active:shadow-lg transition duration-150 ease-in-out"
-                                    data-bs-dismiss="modal"
-                                    id="checkout-btn"
-                                >
-                                    Confirm
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+				<div
+					class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+					id="modal2"
+					tabindex="-1"
+					aria-labelledby="exampleModalCenterTitle"
+					aria-modal="true"
+					role="dialog"
+				>
+					<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+						<div
+							class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+						>
+							<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md">
+								<h5
+									class="text-xl font-medium leading-normal text-gray-800"
+									id="exampleModalScrollableLabel"
+								>
+									Insert Product
+								</h5>
+							</div>
+							<div class="modal-body relative px-4">
+								<div class="flex flex-col items-center">
+									<div class="w-full flex flex-col items-center">
+										<div class="w-full">
+											<h1 class="font-medium text-2xl">
+												Amount to be paid: Rp.<span id="confirm-total">0</span>
+											</h1>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div
+								class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 rounded-b-md gap-1"
+							>
+								<button
+									type="button"
+									class="inline-block px-6 py-2.5 bg-red-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+									data-bs-dismiss="modal"
+									id="close-btn"
+								>
+									Cancel
+								</button>
+								<button
+									type="button"
+									class="inline-block px-6 py-2.5 bg-prim-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-prim-700 hover:shadow-lg focus:bg-prim-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-800 active:shadow-lg transition duration-150 ease-in-out"
+									data-bs-dismiss="modal"
+									id="checkout-btn"
+								>
+									Confirm
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- CDN Scripts Here! -->
-        <script src="//unpkg.com/alpinejs" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"
-            integrity="sha512-9rxMbTkN9JcgG5euudGbdIbhFZ7KGyAuVomdQDI9qXfPply9BJh0iqA7E/moLCatH2JD4xBGHwV6ezBkCpnjRQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-        ></script>
+		<!-- CDN Scripts Here! -->
+		<script src="//unpkg.com/alpinejs" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+			integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"
+			integrity="sha512-9rxMbTkN9JcgG5euudGbdIbhFZ7KGyAuVomdQDI9qXfPply9BJh0iqA7E/moLCatH2JD4xBGHwV6ezBkCpnjRQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
 
-        <!-- Custom Scripts Here -->
-        <script src="./scripts/scripts.js"></script>
-        <script src="./../node_modules/tw-elements/dist/js/index.min.js"></script>
-        <script src="./scripts/checkout.js"></script>
-    </body>
+		<!-- Custom Scripts Here -->
+		<script src="./scripts/scripts.js"></script>
+		<script src="./../node_modules/tw-elements/dist/js/index.min.js"></script>
+		<script src="./scripts/checkout.js"></script>
+	</body>
 </html>
