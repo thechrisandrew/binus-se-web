@@ -10,6 +10,12 @@ $(function () {
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1:3000/product/",
+			headers: {
+				token: document.cookie
+					.split("; ")
+					.find((row) => row.startsWith("token="))
+					?.split("=")[1],
+			},
 			data: data,
 			success: function (data, status) {
 				// console.log(data);

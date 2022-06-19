@@ -13,6 +13,56 @@
 			referrerpolicy="no-referrer"
 		/>
 		<link rel="stylesheet" href="./styles/main.css" />
+		<style>
+			.select-box .options-container {
+				/* background: #2f3640;
+				color: #f5f6fa; */
+				max-height: 0;
+				width: 100%;
+				opacity: 0;
+				transition: all 0.4s;
+				border-radius: 8px;
+				overflow: hidden;
+
+				order: 1;
+			}
+
+			.select-box .options-container.active {
+				max-height: 240px;
+				opacity: 1;
+				overflow-y: scroll;
+				margin-top: 54px;
+			}
+
+			.select-box .options-container.active + .selected::after {
+				transform: rotateX(180deg);
+				top: -6px;
+			}
+
+			.select-box .options-container::-webkit-scrollbar {
+				width: 8px;
+				background: #343434;
+				border-radius: 0 8px 8px 0;
+			}
+
+			.select-box .options-container::-webkit-scrollbar-thumb {
+				background: #525861;
+				border-radius: 0 8px 8px 0;
+			}
+
+			.select-box label {
+				cursor: pointer;
+			}
+
+			.select-box .option .radio {
+				display: none;
+			}
+
+			.select-box .options-container.active ~ .search-box input {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		</style>
 	</head>
 	<body class="antialiased min-h-screen relative lg:flex bg-slate-50" x-data="{open: false}">
 		<!-- NAV/SIDEBAR (LEFT) -->
@@ -83,275 +133,200 @@
 				<!-- Content goes here! -->
 
 				<h1 class="font-medium leading-tight text-3xl mt-8 mb-5">Checkout Page</h1>
-				
+
 				<div class="">
-					<button type="button" class="inline-block px-6 py-2.5 bg-prim-500 text-white font-bold leading-tight rounded shadow-md hover:bg-prim-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-700 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+					<button
+						type="button"
+						class="inline-block px-6 py-2.5 bg-prim-500 text-white font-bold leading-tight rounded shadow-md hover:bg-prim-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-700 active:shadow-lg transition duration-150 ease-in-out"
+						data-bs-toggle="modal"
+						data-bs-target="#modal1"
+					>
 						Add item
-					  </button>
+					</button>
 				</div>
-				<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
+
+				<!-- MODAL -->
+
+				<div
+					class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+					id="modal1"
+					tabindex="-1"
+					aria-labelledby="exampleModalCenterTitle"
+					aria-modal="true"
+					role="dialog"
+				>
 					<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-					  <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-						<div class="modal-header flex flex-shrink-0 items-center justify-between p-4  rounded-t-md">
-						  <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-							Insert Product
-						  </h5>
-						</div>
-						<div class="modal-body relative p-4">
-							<div class="w-full flex">
-								<select
-									class="form-select appearance-none block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-									aria-label="Default select example"
+						<div
+							class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current"
+						>
+							<div class="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md">
+								<h5
+									class="text-xl font-medium leading-normal text-gray-800"
+									id="exampleModalScrollableLabel"
 								>
-									<option selected>CHI001 Chitato Sapi Panggang</option>
-									<option value="1">CHI001 Chitato Sapi Panggang</option>
-									<option value="2">CHI001 Chitato Sapi Panggang</option>
-									<option value="3">CHI001 Chitato Sapi Panggang</option>
-								</select>
-								<input
-										type="text"
-										class="form-control block w-1/3 ml-2 px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-										id="exampleFormControlInput1"
-										placeholder="Qty"
-									/>
+									Insert Product
+								</h5>
+							</div>
+							<div class="modal-body relative px-4">
+								<div class="flex flex-col items-center">
+									<div class="w-full flex flex-col items-center">
+										<div class="w-full">
+											<p class="my-2 text-gray-700">Select Product</p>
+											<!-- SELECT BOX WITH SEARCH HERE -->
+											<div class="select-box relative flex flex-col">
+												<div class="options-container border-2">
+													<template id="optionsTemplate">
+														<div class="option px-5 py-2 hover:bg-gray-200 cursor-pointer">
+															<input
+																type="radio"
+																class="radio"
+																id="{{productId}}"
+																name="category"
+															/>
+															<label for="{{productId}}">
+																<span class="text-gray-700 option-id">
+																	{{productId}}</span
+																>
+																<span class="option-name">{{productName}}</span>
+															</label>
+														</div>
+													</template>
+												</div>
+
+												<div
+													class="selected border-2 rounded-md px-5 py-2 cursor-pointer relative flex justify-between items-center"
+												>
+													<div id="selectedLabel">
+														<span class="text-gray-700" id="selectedId">Select</span>
+														<span id="selectedName"></span>
+													</div>
+
+													<i class="fa-solid fa-chevron-down"></i>
+												</div>
+
+												<div class="search-box">
+													<input
+														class="w-full mt-1 px-5 py-2 opacity-0 z-10 border-2 rounded-md absolute hidden focus:outline-none"
+														type="text"
+														placeholder="Start Typing..."
+													/>
+												</div>
+											</div>
+
+											<label for="quantity" class="form-label inline-block my-2 text-gray-700">
+												Quantity
+											</label>
+											<input
+												type="number"
+												class="form-control block w-full px-5 py-2 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+												id="selectedQuantity"
+												aria-describedby="quantity"
+												placeholder="Enter Quantity"
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div
+								class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 rounded-b-md gap-1"
+							>
+								<button
+									type="button"
+									class="inline-block px-6 py-2.5 bg-red-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
+									data-bs-dismiss="modal"
+									id="close-btn"
+								>
+									Close
+								</button>
+								<button
+									type="button"
+									class="inline-block px-6 py-2.5 bg-prim-600 text-white text-xs leading-tight uppercase rounded shadow-md hover:bg-prim-700 hover:shadow-lg focus:bg-prim-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-800 active:shadow-lg transition duration-150 ease-in-out"
+									data-bs-dismiss="modal"
+									id="confirm-btn"
+								>
+									Confirm
+								</button>
 							</div>
 						</div>
-						<div
-						  class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4  rounded-b-md">
-						  <button type="button"
-							class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-							data-bs-dismiss="modal">
-							Close
-						  </button>
-						  <button type="button"
-							class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1" data-bs-dismiss="modal">
-							Save changes
-						  </button>
-						</div>
-					  </div>
 					</div>
 				</div>
-				
-				
-
-
 
 				<h1 class="font-medium leading-tight text-2xl mt-8 mb-5">Checkout Lists</h1>
 
-				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
-					<div class="px-6 py-4 flex-col justify-between">
-						<div class="flex items-center justify-between mb-5">
-							<p class="font-medium">CHI001 Chitato Sapi Panggang - 168gr</p>
-							<p class="font-medium">10 pcs</p>
-						</div>
-						<div class="flex items-center justify-between">
-							<div class="flex-col">
-								<p class="font-semibold leading-tight text-l">Price: <span class="price font-medium">Rp18.700,-</span></p>
-								<p class="font-semibold leading-tight text-l">Total Price: <span class="totalprice font-medium">Rp187.000,-</span></p>
-							</div>
-							<div class="flex">
-								<div class="font-normal text-2xl mr-3">
-									<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenterEdit">
-										<i class="fa-solid fa-pen border-2 p-3"></i>
-									</button>
-								</div>
-								<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenterEdit" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
-									<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-									  <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-										<div class="modal-header flex flex-shrink-0 items-center justify-between p-4  rounded-t-md">
-										  <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-											Edit Product
-										  </h5>
+				<div class="overflow-auto rounded-lg shadow hidden md:block">
+					<table class="w-full">
+						<thead class="bg-gray-100 border-b-2 border-gray-200">
+							<tr>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">No.</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">SKU</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">Product Name</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">Quantity</th>
+								<th class="p-3 text-sm font-semibold tracking-wide text-left">Action</th>
+							</tr>
+						</thead>
+						<tbody id="bigList">
+							<template id="bigTemplate">
+								<tr class="bg-white" id="big{{productId}}">
+									<td class="p-3 text-sm text-gray-700">
+										<a href="#" class="font-bold text-blue-500 hover:underline">{{num}}</a>
+									</td>
+									<td class="p-3 text-sm text-gray-700">{{productId}}</td>
+									<td class="p-3 text-sm text-gray-700">{{productName}}</td>
+									<td class="p-3 text-sm text-gray-700">{{quantity}}</td>
+									<td>
+										<div class="flex flex-row items-center gap-1">
+											<!-- <span class="delete" id="{{Id}}">Delete</span> -->
+											<button
+												id="{{productId}}"
+												class="delete-btn flex flex-row items-center content-center bg-prim-500 hover:bg-prim-700 text-white font-bold px-2 py-1 rounded"
+											>
+												<i class="text-sm fa-solid fa-trash-can"></i>
+											</button>
 										</div>
-										<div class="modal-body relative p-4">
-											<div class="w-full flex">
-												<select
-													class="form-select appearance-none block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-													aria-label="Default select example"
-												>
-													<option selected>CHI001 Chitato Sapi Panggang</option>
-													<option value="1">CHI001 Chitato Sapi Panggang</option>
-													<option value="2">CHI001 Chitato Sapi Panggang</option>
-													<option value="3">CHI001 Chitato Sapi Panggang</option>
-												</select>
-												<input
-														type="text"
-														class="form-control block w-1/3 ml-2 px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-														id="exampleFormControlInput1"
-														placeholder="Qty"
-													/>
-											</div>
-										</div>
-										<div
-										  class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4  rounded-b-md">
-										  <button type="button"
-											class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-											data-bs-dismiss="modal">
-											Close
-										  </button>
-										  <button type="button"
-											class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1" data-bs-dismiss="modal">
-											Save changes
-										  </button>
-										</div>
-									  </div>
-									</div>
-								</div>
-
-								<div class="font-normal text-2xl mr-3">
-									<button>
-										<i class="fa-solid fa-trash-can border-2 p-3"></i>
-									</button>
-								</div>
-							</div>
-						</div>
-						
-						
-					</div>
-				</div>
-				
-				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
-					<div class="px-6 py-4 flex-col justify-between">
-						<div class="flex items-center justify-between mb-5">
-							<p class="font-medium">CHI001 Chitato Sapi Panggang - 168gr</p>
-							<p class="font-medium">10 pcs</p>
-						</div>
-						<div class="flex items-center justify-between">
-							<div class="flex-col">
-								<p class="font-semibold leading-tight text-l">Price: <span class="price font-medium">Rp18.700,-</span></p>
-								<p class="font-semibold leading-tight text-l">Total Price: <span class="totalprice font-medium">Rp187.000,-</span></p>
-							</div>
-							<div class="flex">
-								<div class="font-normal text-2xl mr-3">
-									<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenterEdit">
-										<i class="fa-solid fa-pen border-2 p-3"></i>
-									</button>
-								</div>
-								<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenterEdit" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
-									<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-									  <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-										<div class="modal-header flex flex-shrink-0 items-center justify-between p-4  rounded-t-md">
-										  <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-											Edit Product
-										  </h5>
-										</div>
-										<div class="modal-body relative p-4">
-											<div class="w-full flex">
-												<select
-													class="form-select appearance-none block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-													aria-label="Default select example"
-												>
-													<option selected>CHI001 Chitato Sapi Panggang</option>
-													<option value="1">CHI001 Chitato Sapi Panggang</option>
-													<option value="2">CHI001 Chitato Sapi Panggang</option>
-													<option value="3">CHI001 Chitato Sapi Panggang</option>
-												</select>
-												<input
-														type="text"
-														class="form-control block w-1/3 ml-2 px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-														id="exampleFormControlInput1"
-														placeholder="Qty"
-													/>
-											</div>
-										</div>
-										<div
-										  class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4  rounded-b-md">
-										  <button type="button"
-											class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-											data-bs-dismiss="modal">
-											Close
-										  </button>
-										  <button type="button"
-											class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1" data-bs-dismiss="modal">
-											Save changes
-										  </button>
-										</div>
-									  </div>
-									</div>
-								</div>
-								<div class="font-normal text-2xl mr-3">
-									<button>
-										<i class="fa-solid fa-trash-can border-2 p-3"></i>
-									</button>
-								</div>
-							</div>
-						</div>
-						
-						
-					</div>
+									</td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
 				</div>
 
-				<div class="w-full mb-1 rounded overflow-hidden shadow-md">
-					<div class="px-6 py-4 flex-col justify-between">
-						<div class="flex items-center justify-between mb-5">
-							<p class="font-medium">CHI001 Chitato Sapi Panggang - 168gr</p>
-							<p class="font-medium">10 pcs</p>
-						</div>
-						<div class="flex items-center justify-between">
-							<div class="flex-col">
-								<p class="font-semibold leading-tight text-l">Price: <span class="price font-medium">Rp18.700,-</span></p>
-								<p class="font-semibold leading-tight text-l">Total Price: <span class="totalprice font-medium">Rp187.000,-</span></p>
-							</div>
-							<div class="flex">
-								<div class="font-normal text-2xl mr-3">
-									<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenterEdit">
-										<i class="fa-solid fa-pen border-2 p-3"></i>
-									</button>
+				<div class="grid grid-cols-1 gap-4 md:hidden" id="smallList">
+					<template id="smallTemplate">
+						<div id="small{{productId}}" class="flex bg-white p-4 rounded-lg shadow">
+							<div class="grow pr-5">
+								<div class="flex items-center space-x-2 text-sm">
+									<div>{{num}}</div>
+									<div>{{productId}}</div>
 								</div>
-								<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenterEdit" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
-									<div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-									  <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-										<div class="modal-header flex flex-shrink-0 items-center justify-between p-4  rounded-t-md">
-										  <h5 class="text-xl font-medium leading-normal text-gray-800" id="exampleModalScrollableLabel">
-											Edit Product
-										  </h5>
-										</div>
-										<div class="modal-body relative p-4">
-											<div class="w-full flex">
-												<select
-													class="form-select appearance-none block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-													aria-label="Default select example"
-												>
-													<option selected>CHI001 Chitato Sapi Panggang</option>
-													<option value="1">CHI001 Chitato Sapi Panggang</option>
-													<option value="2">CHI001 Chitato Sapi Panggang</option>
-													<option value="3">CHI001 Chitato Sapi Panggang</option>
-												</select>
-												<input
-														type="text"
-														class="form-control block w-1/3 ml-2 px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out focus:text-gray-700 focus:bg-white focus:border-prim-400 focus:outline-none"
-														id="exampleFormControlInput1"
-														placeholder="Qty"
-													/>
-											</div>
-										</div>
-										<div
-										  class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4  rounded-b-md">
-										  <button type="button"
-											class="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-											data-bs-dismiss="modal">
-											Close
-										  </button>
-										  <button type="button"
-											class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1" data-bs-dismiss="modal">
-											Save changes
-										  </button>
-										</div>
-									  </div>
-									</div>
+								<div class="edit" contenteditable="true" id="{{Id}}" data-key="productName">
+									{{productName}}
 								</div>
-								<div class="font-normal text-2xl mr-3">
-									<button>
-										<i class="fa-solid fa-trash-can border-2 p-3"></i>
-									</button>
+								<div>
+									Quantity:
+									<span class="edit" contentEditable="true" id="{{Id}}" data-key="quantity"
+										>{{quantity}}</span
+									>
 								</div>
 							</div>
+							<div class="flex gap-1 items-center">
+								<button
+									id="{{productId}}"
+									class="delete-btn flex flex-row items-center content-center bg-prim-500 hover:bg-prim-700 text-white font-bold px-2 py-1 rounded"
+								>
+									<i class="text-sm fa-solid fa-trash-can"></i>
+								</button>
+							</div>
 						</div>
-						
-						
-					</div>
+					</template>
 				</div>
 
+				<button
+					type="button"
+					class="inline-block px-6 py-2.5 mt-10 bg-prim-500 text-white font-bold leading-tight rounded shadow-md hover:bg-prim-600 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-prim-700 active:shadow-lg transition duration-150 ease-in-out"
+					id="checkout-btn"
+				>
+					Confirm Checkout
+				</button>
 			</div>
 		</div>
 
@@ -374,5 +349,6 @@
 		<!-- Custom Scripts Here -->
 		<script src="./scripts/scripts.js"></script>
 		<script src="./../node_modules/tw-elements/dist/js/index.min.js"></script>
+		<script src="./scripts/checkout.js"></script>
 	</body>
 </html>
