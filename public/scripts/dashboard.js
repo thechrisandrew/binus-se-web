@@ -30,7 +30,9 @@ $(document).ready(function () {
 		data.itemStatisticResult.forEach((e) => {
 			console.log(e);
 
-			chartData.labels.push(e.transactionDate.substring(0, 10));
+			var date = new Date(e.transactionDate);
+
+			chartData.labels.push(date.toLocaleDateString());
 
 			chartData.series[0].push(e.totalTransaction);
 		});
