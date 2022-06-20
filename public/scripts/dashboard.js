@@ -1,10 +1,19 @@
 $(document).ready(function () {
 	function render(data) {
+		var formatter = new Intl.NumberFormat("id-ID", {
+			style: "currency",
+			currency: "IDR",
+
+			// These options are needed to round to whole numbers if that's what you want.
+			//minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+			//maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+		});
+
 		// console.log(data.todayResult[0].totalIncome);
-		$("#total-today").text(data.todayResult[0].totalIncome);
+		$("#total-today").text(formatter.format(data.todayResult[0].totalIncome));
 
 		// console.log(data.yesterdayResult[0].totalIncome);
-		$("#total-yesterday").text(data.yesterdayResult[0].totalIncome);
+		$("#total-yesterday").text(formatter.format(data.yesterdayResult[0].totalIncome));
 
 		var chartData = {
 			// A labels array that can contain any sort of values
